@@ -2,6 +2,8 @@
 
 Simplistic CLI tool to generate static SVG org chart from JSON data and templates.
 
+![Sample org chart](org.png)
+
 # Usage
 
 `svorg [-h] [-c CONFIG] -i INPUT [-o] output`
