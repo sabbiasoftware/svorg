@@ -1,0 +1,24 @@
+[
+    { "Id": "CEO", "Name": "John", "Title": "CEO", "NodeTemplate": "HighlightNodeTemplate" },
+    { "Id": "CTO", "Name": "James", "Title": "CTO", "ParentId": "CEO" },
+    { "Id": "CIO", "Name": "Anna", "Title": "CIO", "ParentId": "CEO" },
+    { "Id": "FinDir", "Name": "Daniel", "Title": "Director of Finance", "ParentId": "CIO" },
+    { "Id": "Nicole", "Name": "Nicole", "Title": "Director of Development", "ParentId": "CTO" },
+    { "Id": "Arnold", "Name": "Arnold", "Title": "Director of Development", "ParentId": "CTO" },
+    { "Id": "Charlie", "Name": "Charlie", "Title": "Director of Development", "ParentId": "CTO" },
+
+    { "Id": "depClient", "Name": "Client facing", "ParentId": "Nicole", "NodeTemplate": "DepNodeTemplate", "StackChildren": true },
+    { "Id": "depInt", "Name": "Integration", "ParentId": "Arnold", "NodeTemplate": "DepNodeTemplate", "StackChildren": true },
+    { "Id": "depBO", "Name": "Back Office", "ParentId": "Charlie", "NodeTemplate": "DepNodeTemplate", "StackChildren": true },
+
+    { "Id": "Team 1", "Name": "Team 1", "ParentId": "depClient", "NodeTemplate": "TeamNodeTemplate" },
+    { "Id": "Team 2", "Name": "Team 2", "ParentId": "depClient", "NodeTemplate": "TeamNodeTemplate" },
+    { "Id": "Team 3", "Name": "Team 3", "ParentId": "depClient", "NodeTemplate": "TeamNodeTemplate" },
+    { "Id": "Team 4", "Name": "Team 4", "ParentId": "depClient", "NodeTemplate": "TeamNodeTemplate" },
+
+    { "Id": "Team 5", "Name": "Team 5", "ParentId": "depInt", "NodeTemplate": "TeamNodeTemplate" },
+    { "Id": "Team 6", "Name": "Team 6", "ParentId": "depInt", "NodeTemplate": "TeamNodeTemplate" },
+    { "Id": "Team 7", "Name": "Team 7", "ParentId": "depInt", "NodeTemplate": "TeamNodeTemplate" },
+
+    { "Id": "Team 8", "Name": "Team 8", "ParentId": "depBO", "NodeTemplate": "TeamNodeTemplate" }
+]
