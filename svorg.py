@@ -180,7 +180,7 @@ for d in dat:
 
 prepareAll(cfg, t)
 
-if not args.overwrite:
+if not args.overwrite and os.path.exists(args.output):
     if input("Overwrite '{}'? [y/N] ".format(args.output)).lower() != 'y':
         exit(0)
 
