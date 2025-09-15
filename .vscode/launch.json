@@ -10,7 +10,13 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
-            "args": ["-c", "sample.cfg", "-i", "sample.json", "orgchart.svg"]
+            "args": [
+                "-c",
+                "../svorg_rdi/dighu.cfg",
+                "-i",
+                "../svorg_rdi/dighu.json",
+                "../svorg_rdi/dighu3.svg"
+            ]
         }
     ]
 }
