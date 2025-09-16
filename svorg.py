@@ -24,6 +24,28 @@ class Node:
         for key, value in attrs.items():
             setattr(self, key, value)
 
+# Check if 1) all nodes have an Id, 2) all NodeIds are unique and 3) all ParentId refers to existing NodeId
+def checkNodes(t):
+    nodeIdSet = set()
+    for n in t:
+        if not hasattr(n, 'Id'):
+            # 1) Node does not have an Id
+            print(f"Error: Node does not have a NodeId: {vars(n)}")
+            return False
+        else:
+            if n.Id in nodeIdSet:
+                # 2) Duplicate NodeId
+                print(f"Error: Duplicate NodeId: {vars(n)}")
+                return False
+            else:
+                nodeIdSet.add(n.Id)
+            if hasattr(n, 'ParentId') and n.ParentId:
+                if n.ParentId not in nodeIdSet:
+                    # Non existing ParentId reference
+                    print(f"Error: Non existing reference in ParentId: {vars(n)}")
+                    return False
+    return True
+
 # Set level and width of node and its children recursively
 def prepare(cfg, t, node, stackChildren):
     if node.StackChildren is None:
@@ -178,11 +200,13 @@ t = []
 for d in dat:
     t.append(Node(d))
 
-prepareAll(cfg, t)
+if (checkNodes(t)):
+    prepareAll(cfg, t)
 
-if not args.overwrite and os.path.exists(args.output):
-    if input("Overwrite '{}'? [y/N] ".format(args.output)).lower() != 'y':
-        exit(0)
+    if not args.overwrite and os.path.exists(args.output):
+        if input("Overwrite '{}'? [y/N] ".format(args.output)).lower() != 'y':
+            exit(0)
 
-with open(args.output, "w", encoding="utf-8") as f:
-    writeAll(f, cfg, t)
+    with open(args.output, "w", encoding="utf-8") as f:
+        writeAll(f, cfg, t)
+
